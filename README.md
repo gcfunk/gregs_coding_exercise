@@ -1,27 +1,32 @@
-# GregsCodingExercise
+# Gregs Coding Exercise
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+Hello interviewers! Thank you for the opportunity to demonstrate some skills, and hopefully we'll have some fun along the way.
 
-## Development server
+First up, documentation! I'm a big proponent of good documentation as a kindness to the next developer that picks up the code that I write for maintenance or adding features. Sometimes the next developer is me, and it pays dividends to write down my thinking at the time. This readme doc, plus comments in the code serve as example documentation.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Setup
 
-## Code scaffolding
+Required software:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* node - [https://nodejs.org/](https://nodejs.org/)
 
-## Build
+Open a terminal (git bash on Windows or Terminal app on Mac) and enter the following commands:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`$ git clone git@github.com:gcfunk/gregs_coding_exercise.git`
 
-## Running unit tests
+`$ cd gregs_coding_exercise`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`$ npm install`
 
-## Running end-to-end tests
+## Running the code
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+`$ cd gregs_coding_exercise`
 
-## Further help
+`$ npm start`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Open a web browser to [http://localhost:4200/](http://localhost:4200/)
+
+## Skills demonstrated
+
+1. Documentation (comments and markdown documents)
+2. 
