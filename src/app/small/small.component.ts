@@ -25,7 +25,11 @@ export class SmallComponent implements OnInit {
   delay(ms: any) {
     // defensive code - if the parameter isn't a number, wait 0 milliseconds
     // so the promise still resolves and doesn't block code execution
-    let msToWait = (typeof ms === 'number') ? ms : 0;
+    let msAsNumber = new Number(ms);
+    let msToWait = parseInt(msAsNumber.toFixed(0));
+    if (isNaN(msToWait)) {
+      msToWait = 0;
+    }
 
     // borrowed from https://javascript.info/task/delay-promise
     // skill demonstrated - copy/paste code from the internet
