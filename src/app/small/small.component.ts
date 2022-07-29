@@ -14,7 +14,7 @@ export class SmallComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // demonstrates the delay function by displaying a message, waiting 2 seconds, then displaying a different message
+  // demonstrates the delay() function by displaying a message, waiting 2 seconds, then displaying a different message
   delayDemo() {
     this.delayMessage = 'Waiting...';
     this.delay(2000).then(() => this.delayMessage = 'Done!');
@@ -33,13 +33,51 @@ export class SmallComponent implements OnInit {
     return new Promise(resolve => setTimeout(resolve, msToWait));
   }
 
+  // demonstrates the animateRight() function by sliding a few elements on the page
+  animateRightDemo() {
+    // bonus: works on any element type
+    this.animateRight(document.getElementById('slide-div'));
+    this.animateRight(document.getElementById('slide-p'));
+    this.animateRight(document.getElementById('slide-label'));
+    this.animateRight(document.getElementById('slide-input'));
+    this.animateRight(document.getElementById('slide-iframe'));
+    this.animateRight(document.getElementById('slide-flex'));
+    this.animateRight(document.getElementById('slide-svg'));
+  }
+
   // el: element node object
   // moves the element to the right by 100px over a duration of 1 second
   animateRight(el: any) {
+    // assumes el is already rendered on the page. If not, we'd have to use appendChild to add it to a container element
+  
+    /*
+    For discussion: animating css transform is the "best" solution here. See small.component.scss for the animation code.
+    Pros:
+      * small amount of code
+      * works in all modern browsers
+      * will use the GPU to smooth the animation steps
+    Cons:
+      * css transform creates a new stacking context, which could cause the sliding element to go over or under other elements
+        if it's on a modal or something
+      * don't get to use the delay() function from the previous exercise
+    */
+
+    const element = (el as HTMLElement);
+
+    // this feels a little hacky. the 'translation' css property doesn't work on elements that are display: inline, so
+    // force them to be 'inline-block'
+    const style = getComputedStyle(element);
+    if (style.display === 'inline') {
+      element.classList.add('inline-block');
+    }
+
+    // add the animation
+    element.classList.add('slide-me');
   }
 
   // xs: array
   // returns: a new array, with unique items
   removeDuplicates(xs: any) {
+    return xs;
   }
 }
