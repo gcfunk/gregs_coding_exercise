@@ -81,7 +81,24 @@ export class SmallComponent implements OnInit {
 
   // xs: array
   // returns: a new array, with unique items
-  removeDuplicates(xs: any) {
-    return xs;
+  removeDuplicates(xs: Array<any>) {
+    return xs.filter((value, index, self) => {
+      // if value is the first of itself, return true (keep), else false (remove)
+      return self.indexOf(value) === index;
+    });
+
+    /*
+    For discussion: this solutions works for the simplest use case of a 1 dimensional array of primatives.
+    Some things to consider for a more robust solution:
+    1. Nested arrays
+    2. === vs ==
+    3. handling of undefined, null, and NaN
+    4. Complex objects as array elements
+    5. Will be slow for large arrays (order n^2 time I think)
+
+    There's lots of churn on posts like this https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+    
+    WAIT, HASHMAP. I'D USE A HASHMAP!!!!
+    */
   }
 }
