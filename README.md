@@ -29,4 +29,4 @@ Open a web browser to [http://localhost:4200/](http://localhost:4200/)
 ## Skills demonstrated
 
 1. Documentation (comments and markdown documents)
-2. 
+2. Copy / Pasting code from the internet and having opinions about it (delay example)
