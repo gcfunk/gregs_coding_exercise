@@ -26,6 +26,12 @@ Open a terminal (git bash on Windows or Terminal app on Mac) and enter the follo
 
 Open a web browser to [http://localhost:4200/](http://localhost:4200/)
 
+## Unit tests
+
+`$ cd gregs_coding_exercise`
+
+`$ npm run test`
+
 ## Skills demonstrated
 
 1. Documentation (comments and markdown documents)
