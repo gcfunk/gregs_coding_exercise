@@ -57,3 +57,4 @@ Open a web browser to [http://localhost:4200/](http://localhost:4200/)
 6. Responsive layouts
 7. Keyboard accessibility
 8. Working with data from an API
+9. Knowing when to quit, or when a solution is good enough. (Loading the dog images via API)
