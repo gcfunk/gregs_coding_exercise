@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import Utils from '../utils';
 
 interface Dog {
   breed: string;
@@ -37,7 +38,7 @@ export class DogsComponent implements OnInit {
           let shortList: Array<string> = [];
           while(shortList.length < this.numberOfDogsToShow) {
             shortList.push(this.breeds[Math.floor(Math.random() * this.breeds.length)]);
-            shortList = this.removeDuplicates(shortList);
+            shortList = Utils.removeDuplicates(shortList);
           }
           this.breeds = shortList;
 
@@ -53,13 +54,6 @@ export class DogsComponent implements OnInit {
         this.showLoading = false;
         this.errorMsg = error;
       }
-    });
-  }
-
-  removeDuplicates(xs: Array<any>) {
-    return xs.filter((value, index, self) => {
-      // if value is the first of itself, return true (keep), else false (remove)
-      return self.indexOf(value) === index;
     });
   }
 

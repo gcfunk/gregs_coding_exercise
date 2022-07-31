@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SmallComponent } from './small.component';
+import Utils from '../utils';
 
 describe('SmallComponent', () => {
   let component: SmallComponent;
@@ -39,24 +39,24 @@ describe('SmallComponent', () => {
     it('removes duplicates', () => {
       const original = [1, 1, 2];
       const unique = [1, 2];
-      expect(compareArrays(component.removeDuplicates(original), unique)).toEqual(true);
+      expect(compareArrays(Utils.removeDuplicates(original), unique)).toEqual(true);
     });
 
     it('doesnt remove unique values', () => {
-      expect(component.removeDuplicates([1,2]).length).toEqual(2);
+      expect(Utils.removeDuplicates([1,2]).length).toEqual(2);
     });
 
     it('works for mixed data types', () => {
       const original = [1, 1, '1', '1', true, true];
       const unique = [1, '1', true];
-      expect(compareArrays(component.removeDuplicates(original), unique)).toEqual(true);
+      expect(compareArrays(Utils.removeDuplicates(original), unique)).toEqual(true);
     });
 
     it('works for complex data types', () => {
       // this test intentionally fails to demonstrate the limitations of the current solution
       const original = [{x: 1}, {x: 1}];
       const unique = [{x: 1}];
-      expect(compareArrays(component.removeDuplicates(original), unique)).toEqual(true);
+      expect(compareArrays(Utils.removeDuplicates(original), unique)).toEqual(true);
     });
   });
 });

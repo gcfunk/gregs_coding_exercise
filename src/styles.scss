@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// could also use @keyframes here, but transition is easier since it's a simple animation
+.slide-me {
+    transition: transform 1s ease;
+    transform: translateX(100px);
+    // note: I don't *think* I have to use the vendor prefixes anymore (-webkit-transform, etc),
+    // but it would depend on what browsers we're targeting
+}
+
+.inline-block {
+    display: inline-block;
+}
