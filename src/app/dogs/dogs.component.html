@@ -1,2 +1,6 @@
 <p *ngIf="errorMsg">There was an error: {{ errorMsg }}</p>
-<p></p>
+<p *ngIf="showLoading">Loading...</p>
+<div *ngIf="!errorMsg && !showLoading">
+    <img [src]="images[0].image">
+    <p>{{ images[0].breed }}</p>
+</div>

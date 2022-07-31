@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
+interface Dog {
+  breed: string;
+  image: string;
+}
+
 @Component({
   selector: 'app-dogs',
   templateUrl: './dogs.component.html',
@@ -10,23 +15,70 @@ export class DogsComponent implements OnInit {
 
   showLoading = false;
   errorMsg = '';
-  allBreeds = {};
+  breeds: Array<string> = [];
+  numberOfDogsToShow = 11;
+  images: Array<Dog> = [];
 
   constructor(public http: HttpClient) { }
 
   ngOnInit(): void {
+    this.loadAddBreeds();
+  }
+
+  loadAddBreeds() {
     this.showLoading = true;
     this.errorMsg = '';
     this.http.get('https://dog.ceo/api/breeds/list/all').subscribe({
       next: (response: any) => {
         if (response['status'] === 'success') {
-          this.allBreeds = response['message'];
-          console.log(this.allBreeds);
+          this.breeds = Object.keys(response['message']);
+          
+          // takes the list of all breeds and chooses a random set without duplicates
+          let shortList: Array<string> = [];
+          while(shortList.length < this.numberOfDogsToShow) {
+            shortList.push(this.breeds[Math.floor(Math.random() * this.breeds.length)]);
+            shortList = this.removeDuplicates(shortList);
+          }
+          this.breeds = shortList;
+
+          this.breeds.forEach(breed => {
+            this.loadImageForBreed(breed);
+          });
         } else {
           this.showLoading = false;
           this.errorMsg = response['message'];
         }
+      },
+      error: (error:any) => {
         this.showLoading = false;
+        this.errorMsg = error;
+      }
+    });
+  }
+
+  removeDuplicates(xs: Array<any>) {
+    return xs.filter((value, index, self) => {
+      // if value is the first of itself, return true (keep), else false (remove)
+      return self.indexOf(value) === index;
+    });
+  }
+
+  loadImageForBreed(breed: string) {
+    this.showLoading = true;
+    this.errorMsg = '';
+    this.http.get(`https://dog.ceo/api/breed/${breed}/images`).subscribe({
+      next: (response: any) => {
+        if (response['status'] === 'success') {
+          let images = response['message'];
+          this.images.push({
+            breed: breed,
+            image: images[Math.floor(Math.random() * images.length)]
+          });
+          this.showLoading = false;
+        } else {
+          this.showLoading = false;
+          this.errorMsg = response['message'];
+        }
       },
       error: (error:any) => {
         this.showLoading = false;
