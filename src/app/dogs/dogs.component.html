@@ -5,9 +5,10 @@
         <img [src]="selectedDog.image">
         <p>{{ selectedDog.breed }}</p>
     </div>
+    <div class="selected">&mdash;</div>
     <div class="dogs">
         <div *ngFor="let dog of images" class="dog">
-            <a (click)="selectedDog = dog">
+            <a href="javascript:void()" (click)="selectedDog = dog">
                 <img [src]="dog.image">
                 <p>{{ dog.breed }}</p>
             </a>
