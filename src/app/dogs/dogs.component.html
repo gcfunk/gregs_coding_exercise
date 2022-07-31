@@ -1,6 +1,16 @@
 <p *ngIf="errorMsg">There was an error: {{ errorMsg }}</p>
 <p *ngIf="showLoading">Loading...</p>
 <div *ngIf="!errorMsg && !showLoading">
-    <img [src]="images[0].image">
-    <p>{{ images[0].breed }}</p>
+    <div class="selected">
+        <img [src]="selectedDog.image">
+        <p>{{ selectedDog.breed }}</p>
+    </div>
+    <div class="dogs">
+        <div *ngFor="let dog of images" class="dog">
+            <a (click)="selectedDog = dog">
+                <img [src]="dog.image">
+                <p>{{ dog.breed }}</p>
+            </a>
+        </div>
+    </div>
 </div>
